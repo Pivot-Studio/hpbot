@@ -2,6 +2,7 @@ package coolq
 
 import (
 	"encoding/hex"
+	"github.com/Mrs4s/go-cqhttp/global/filter"
 	"io/ioutil"
 	"path"
 	"strconv"
@@ -103,6 +104,13 @@ func (bot *CQBot) groupMessageEvent(c *client.QQClient, m *message.GroupMessage)
 		id = bot.InsertGroupMessage(m)
 	}
 	log.Infof("收到群 %v(%v) 内 %v(%v) 的消息: %v (%v)", m.GroupName, m.GroupCode, m.Sender.DisplayName(), m.Sender.Uin, cqm, id)
+	result, err := filter.FilterManager.Filter().Filter(cqm, '*', '@')
+	if err != nil {
+		panic(err)
+	}
+	if result != nil {
+		bot.CQDeleteMessage(id)
+	}
 	gm := bot.formatGroupMessage(m)
 	if gm == nil {
 		return

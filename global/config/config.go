@@ -25,6 +25,7 @@ var DefaultConfigFile = path.Join(currentPath, "config.yml")
 
 // Config 总配置文件
 type Config struct {
+	Keywords []string `yaml:"keywords"`
 	Account struct {
 		Uin      int64  `yaml:"uin"`
 		Password string `yaml:"password"`

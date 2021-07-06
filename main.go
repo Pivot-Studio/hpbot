@@ -8,6 +8,7 @@ import (
 	"encoding/hex"
 	"flag"
 	"fmt"
+	"github.com/Mrs4s/go-cqhttp/global/filter"
 	"io/ioutil"
 	"os"
 	"os/exec"
@@ -392,6 +393,7 @@ func main() {
 	} else {
 		coolq.SetMessageFormat(conf.Message.PostFormat)
 	}
+	filter.InitFilter(conf.Keywords)
 	log.Info("正在加载事件过滤器.")
 	coolq.IgnoreInvalidCQCode = conf.Message.IgnoreInvalidCQCode
 	coolq.SplitURL = conf.Message.FixURL

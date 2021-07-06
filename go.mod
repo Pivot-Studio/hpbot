@@ -5,6 +5,8 @@ go 1.16
 require (
 	github.com/Baozisoftware/qrcode-terminal-go v0.0.0-20170407111555-c0650d8dff0f
 	github.com/Mrs4s/MiraiGo v0.0.0-20210525010101-8f0cd9494d64
+	github.com/antlinker/go-cmap v0.0.0-20160407022646-0c5e57012e96 // indirect
+	github.com/antlinker/go-dirtyfilter v1.2.0
 	github.com/dustin/go-humanize v1.0.0
 	github.com/gin-contrib/pprof v1.3.0
 	github.com/gin-gonic/gin v1.7.1
@@ -29,5 +31,6 @@ require (
 	golang.org/x/crypto v0.0.0-20210421170649-83a5a9bb288b
 	golang.org/x/term v0.0.0-20210422114643-f5beecf764ed
 	golang.org/x/time v0.0.0-20210220033141-f8bda1e9f3ba
+	gopkg.in/mgo.v2 v2.0.0-20190816093944-a6b53ec6cb22 // indirect
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b
 )

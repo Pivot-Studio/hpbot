@@ -7,6 +7,7 @@ import (
 	"github.com/Mrs4s/go-cqhttp/global/config"
 	filter "github.com/antlinker/go-dirtyfilter"
 	"github.com/antlinker/go-dirtyfilter/store"
+	log "github.com/sirupsen/logrus"
 )
 
 var FilterManager *filter.DirtyManager
@@ -24,6 +25,7 @@ func InitFilter(keywords []string) {
 func FetchBlockWord() {
 	res, err := http.Get("https://raw.githubusercontent.com/Pivot-Studio/HUSTPORT_blockwords/master/blockwords.txt")
 	if err != nil {
+		log.Error("HTTP fetch blockwords fail")
 		return
 	}
 	defer res.Body.Close()

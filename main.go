@@ -397,6 +397,7 @@ func main() {
 	ticker := time.NewTicker(time.Minute * 2)
 	go func() {
 		for _ = range ticker.C {
+			log.Info("fetching github block words")
 			filter.FetchBlockWord()
 			filter.InitFilter(conf.Keywords)
 		}

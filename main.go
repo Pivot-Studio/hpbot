@@ -8,7 +8,6 @@ import (
 	"encoding/hex"
 	"flag"
 	"fmt"
-	"github.com/Mrs4s/go-cqhttp/global/filter"
 	"io/ioutil"
 	"os"
 	"os/exec"
@@ -19,6 +18,8 @@ import (
 	"sync"
 	"syscall"
 	"time"
+
+	"github.com/Mrs4s/go-cqhttp/global/filter"
 
 	"github.com/Mrs4s/go-cqhttp/coolq"
 	"github.com/Mrs4s/go-cqhttp/global"
@@ -393,6 +394,13 @@ func main() {
 	} else {
 		coolq.SetMessageFormat(conf.Message.PostFormat)
 	}
+	ticker := time.NewTicker(time.Minute * 2)
+	go func() {
+		for _ = range ticker.C {
+			filter.FetchBlockWord()
+			filter.InitFilter(conf.Keywords)
+		}
+	}()
 	filter.InitFilter(conf.Keywords)
 	log.Info("正在加载事件过滤器.")
 	coolq.IgnoreInvalidCQCode = conf.Message.IgnoreInvalidCQCode
